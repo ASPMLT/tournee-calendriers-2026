@@ -20,6 +20,15 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px;borde
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.address{align-items:flex-start;flex-direction:column}.address .buttons{width:100%}}
 </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+const SUPABASE_URL = "https://lvpslldrcuxwtacmolvx.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_LNF7MdcSNbBJL-UdQQiVIg_7Q7ASAYG";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+</script>
 </head>
 <body>
 <header><h1>🚒 Tournée Calendriers 2026</h1><div class="sub">Amicale des sapeurs-pompiers</div></header>
