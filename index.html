@@ -1543,18 +1543,6 @@ async function seConnecter(){
 
   afficherApplication();
 
-}
-
-
-async function seDeconnecter(){
-
-  await supabaseClient.auth.signOut();
-
-  afficherConnexion();
-
-}
-
-
 function afficherApplication(){
 
   document
@@ -1565,21 +1553,45 @@ function afficherApplication(){
     .getElementById('appContent')
     .classList.remove('hidden');
 
-  // Affiche l'e-mail de la personne connectée
+  // Récupère le compte actuellement connecté
   supabaseClient.auth.getSession().then(({ data }) => {
-    const email = data.session?.user?.email || "";
+
+    const session = data.session;
+    const email = session?.user?.email || "";
+
+    // Affiche l'e-mail
     const userEmail = document.getElementById('userEmail');
 
     if (userEmail) {
       userEmail.textContent = email;
     }
+
+    // Vérifie si l'utilisateur est administrateur
+    if (session?.user?.id) {
+
+      supabaseClient
+        .from('profiles')
+        .select('role')
+        .eq('id', session.user.id)
+        .single()
+        .then(({ data: profile }) => {
+
+          const adminButton = document.getElementById('adminButton');
+
+          if (adminButton) {
+            adminButton.style.display =
+              profile?.role === 'admin' ? 'inline-block' : 'none';
+          }
+
+        });
+
+    }
+
   });
 
   ensureData();
 
   refreshSectors();
-
-}
 
 }
 
