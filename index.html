@@ -1499,6 +1499,12 @@ async function seConnecter(){
     return;
 
   }
+  async function seDeconnecter() {
+  await supabaseClient.auth.signOut();
+  document.getElementById("userEmail").textContent = "";
+  document.getElementById("loginScreen").style.display = "block";
+  document.getElementById("appContent").style.display = "none";
+}
 
   message.textContent=
     'Connexion en cours...';
