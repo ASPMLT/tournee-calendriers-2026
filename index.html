@@ -243,20 +243,14 @@ const supabaseClient = window.supabase.createClient(
 <div id="appContent" class="hidden">
 
 <header>
-
   <h1>🚒 Tournée Calendriers 2026</h1>
-
-  <div class="sub">
-    Amicale des sapeurs-pompiers
+  <div class="sub">Amicale des sapeurs-pompiers</div>
+  <div id="userInfo" style="margin-top:10px;font-size:14px;">
+    👤 Connecté : <strong id="userEmail"></strong>
+    <button onclick="seDeconnecter()" style="margin-left:10px;padding:7px 12px;">
+      🚪 Déconnexion
+    </button>
   </div>
-
-  <button
-    class="logout"
-    onclick="seDeconnecter()"
-  >
-    Déconnexion
-  </button>
-
 </header>
 
 <main>
