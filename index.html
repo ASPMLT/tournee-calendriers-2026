@@ -4,1655 +4,523 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tournée Calendriers 2026</title>
-
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  background:#f4f5f7;
-  color:#18202a
-}
-header{
-  background:#c62828;
-  color:white;
-  padding:18px 16px;
-  position:sticky;
-  top:0;
-  z-index:5;
-  box-shadow:0 2px 8px #0002
-}
-h1{margin:0;font-size:21px}
-.sub{opacity:.9;font-size:13px;margin-top:3px}
-main{max-width:900px;margin:auto;padding:16px}
-.card{
-  background:white;
-  border-radius:14px;
-  padding:16px;
-  margin-bottom:14px;
-  box-shadow:0 1px 5px #0001
-}
-label{
-  font-weight:650;
-  font-size:14px;
-  display:block;
-  margin:8px 0 5px
-}
-select,input,button,textarea{font:inherit}
-select,input,textarea{
-  width:100%;
-  padding:11px;
-  border:1px solid #ccd1d8;
-  border-radius:9px;
-  background:white
-}
-button{
-  border:0;
-  border-radius:9px;
-  padding:11px 14px;
-  font-weight:700;
-  cursor:pointer
-}
-.primary{background:#c62828;color:#fff}
-.secondary{background:#eef0f3}
-.success{background:#2e7d32;color:white}
-.warn{background:#f9a825;color:#111}
-.danger{background:#d32f2f;color:white}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:10px
-}
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px
-}
-.stat{
-  padding:12px;
-  border-radius:10px;
-  background:#f1f3f5;
-  text-align:center
-}
-.num{font-size:22px;font-weight:800}
-.small{font-size:12px;color:#65707c}
-.address{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:12px 0;
-  border-bottom:1px solid #eee
-}
-.address:last-child{border-bottom:0}
-.addr{font-weight:650}
-.badge{
-  font-size:11px;
-  padding:4px 7px;
-  border-radius:99px;
-  background:#e9ecef
-}
-.buttons{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap
-}
-.buttons button{
-  padding:8px 10px;
-  font-size:12px
-}
-.hidden{display:none}
-.row{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap
-}
-.row>*{flex:1}
-.notice{
-  background:#fff8e1;
-  border-left:4px solid #f9a825;
-  padding:10px;
-  border-radius:7px;
-  font-size:13px
-}
-.login-container{
-  max-width:420px;
-  margin:60px auto;
-  padding:20px
-}
-.login-logo{
-  text-align:center;
-  font-size:48px;
-  margin-bottom:5px
-}
-.login-title{
-  text-align:center;
-  margin-top:0
-}
-.login-button{
-  width:100%;
-  padding:13px;
-  font-size:16px;
-  margin-top:10px
-}
-.login-message{
-  margin-top:15px;
-  text-align:center;
-  font-size:14px
-}
-.logout{
-  float:right;
-  margin-top:-38px;
-  background:white;
-  color:#c62828
-}
-@media(max-width:600px){
-  .stats{grid-template-columns:repeat(2,1fr)}
-  .address{
-    align-items:flex-start;
-    flex-direction:column
-  }
-  .address .buttons{width:100%}
-  .logout{
-    float:none;
-    margin-top:10px
-  }
-}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f5f7;color:#18202a}
+header{background:#c62828;color:white;padding:18px 16px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0002}
+h1{margin:0;font-size:21px}.sub{opacity:.9;font-size:13px;margin-top:3px}
+main{max-width:900px;margin:auto;padding:16px}.card{background:white;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 5px #0001}
+label{font-weight:650;font-size:14px;display:block;margin:8px 0 5px}select,input,button,textarea{font:inherit}
+select,input,textarea{width:100%;padding:11px;border:1px solid #ccd1d8;border-radius:9px;background:white}
+button{border:0;border-radius:9px;padding:11px 14px;font-weight:700;cursor:pointer}
+.primary{background:#c62828;color:#fff}.secondary{background:#eef0f3}.success{background:#2e7d32;color:white}.warn{background:#f9a825;color:#111}.danger{background:#d32f2f;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{padding:12px;border-radius:10px;background:#f1f3f5;text-align:center}.num{font-size:22px;font-weight:800}.small{font-size:12px;color:#65707c}
+.address{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #eee}.address:last-child{border-bottom:0}.addr{font-weight:650}.badge{font-size:11px;padding:4px 7px;border-radius:99px;background:#e9ecef}.buttons{display:flex;gap:6px;flex-wrap:wrap}.buttons button{padding:8px 10px;font-size:12px}
+.hidden{display:none}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.notice{background:#fff8e1;border-left:4px solid #f9a825;padding:10px;border-radius:7px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.address{align-items:flex-start;flex-direction:column}.address .buttons{width:100%}}
+
+/* Authentification */
+.auth-wrap{max-width:420px;margin:45px auto;padding:20px}
+.auth-card{background:white;border-radius:14px;padding:20px;box-shadow:0 1px 5px #0001}
+.auth-card h2{margin-top:0}
+.auth-error{color:#c62828;font-weight:600}
+.user-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.user-actions button{padding:7px 12px}
+.admin-panel{display:none}
+.admin-panel.open{display:block}
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.admin-grid{grid-template-columns:1fr}}
 </style>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
 const SUPABASE_URL = "https://lvpslldrcuxwtacmolvx.supabase.co";
-
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_LNF7MdcSNbBJL-UdQQiVIg_7Q7ASAYG";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 </script>
-
 </head>
-
 <body>
 
-<!-- ========================= -->
-<!-- ÉCRAN DE CONNEXION -->
-<!-- ========================= -->
+<!-- ECRAN DE CONNEXION -->
+<section id="loginScreen" class="auth-wrap">
+  <div class="auth-card">
+    <h2>🔥 Tournée Calendriers 2026</h2>
+    <p>Connectez-vous pour accéder à la tournée.</p>
 
-<div id="loginScreen" class="login-container">
+    <label for="loginEmail">Adresse e-mail</label>
+    <input id="loginEmail" type="email" placeholder="Votre adresse e-mail" autocomplete="username">
 
-  <div class="card">
+    <label for="loginPassword">Mot de passe</label>
+    <input id="loginPassword" type="password" placeholder="Votre mot de passe" autocomplete="current-password">
 
-    <div class="login-logo">🚒</div>
-
-    <h2 class="login-title">
-      Tournée Calendriers 2026
-    </h2>
-
-    <p style="text-align:center">
-      <strong>Amicale des sapeurs-pompiers</strong>
-    </p>
-
-    <p style="text-align:center;color:#65707c">
-      Connectez-vous pour accéder à la tournée.
-    </p>
-
-    <label for="loginEmail">
-      Adresse e-mail
-    </label>
-
-    <input
-      id="loginEmail"
-      type="email"
-      placeholder="Votre adresse e-mail"
-      autocomplete="username"
-    >
-
-    <label for="loginPassword">
-      Mot de passe
-    </label>
-
-    <input
-      id="loginPassword"
-      type="password"
-      placeholder="Votre mot de passe"
-      autocomplete="current-password"
-    >
-
-    <button
-      class="primary login-button"
-      onclick="seConnecter()"
-    >
-      🔐 Se connecter
-    </button>
-
-    <p id="loginMessage" class="login-message"></p>
-
+    <button class="primary" onclick="seConnecter()" style="width:100%;margin-top:10px;">🔐 Se connecter</button>
+    <p id="loginMessage" class="small" style="margin-top:15px"></p>
   </div>
+</section>
 
-</div>
-
-
-<!-- ========================= -->
-<!-- APPLICATION -->
-<!-- ========================= -->
-
+<!-- APPLICATION : CACHEE TANT QUE L'UTILISATEUR N'EST PAS CONNECTE -->
 <div id="appContent" class="hidden">
+  <header>
+    <h1>🚒 Tournée Calendriers 2026</h1>
+    <div class="sub">Amicale des sapeurs-pompiers</div>
+    <div id="userInfo" style="margin-top:10px;font-size:14px;">
+      👤 Connecté : <strong id="userEmail"></strong>
+      <div class="user-actions">
+        <button id="adminButton" class="secondary" onclick="ouvrirAdministration()" style="display:none;">⚙️ Administration</button>
+        <button class="secondary" onclick="seDeconnecter()">🚪 Déconnexion</button>
+      </div>
+    </div>
+  </header>
 
-<header>
-  <h1>🚒 Tournée Calendriers 2026</h1>
-  <div class="sub">Amicale des sapeurs-pompiers</div>
+  <main>
+    <div id="adminPanel" class="card admin-panel">
+      <div class="row">
+        <div><h2>⚙️ Administration</h2><div class="small">Comptes, secteurs, attributions et adresses.</div></div>
+        <button class="secondary" onclick="fermerAdministration()">Fermer</button>
+      </div>
+      <div id="adminMessage" class="notice" style="margin-top:10px">
+        L'administration permet de préparer toute la tournée.
+      </div>
 
-  <div id="userInfo" style="margin-top:10px;font-size:14px;">
-    👤 Connecté : <strong id="userEmail"></strong>
+      <div class="card" style="margin-top:14px;background:#fafafa">
+        <h3>👥 Comptes et attribution des secteurs</h3>
+        <div class="small">Les comptes de connexion se créent dans Supabase. Ici, tu peux modifier le nom, le rôle et attribuer plusieurs secteurs à chaque vendeur.</div>
+        <div id="adminUsers" style="margin-top:10px"></div>
+      </div>
 
-    <button onclick="seDeconnecter()" style="margin-left:10px;padding:7px 12px;">
-      🚪 Déconnexion
-    </button>
+      <div class="card" style="margin-top:14px;background:#fafafa">
+        <h3>📍 Gestion des secteurs</h3>
+        <div class="grid">
+          <div><label>Code du secteur</label><input id="adminSectorCode" placeholder="Ex. M1"></div>
+          <div><label>Commune</label><input id="adminSectorCommune" placeholder="Ex. Mars-la-Tour"></div>
+          <div><label>Calendriers prévus</label><input id="adminSectorCount" type="number" min="0" value="0"></div>
+        </div>
+        <div class="buttons" style="margin-top:10px">
+          <button class="primary" onclick="ajouterSecteur()">➕ Ajouter le secteur</button>
+          <button class="secondary" onclick="chargerAdministration()">🔄 Actualiser</button>
+        </div>
+        <div id="adminSectors" style="margin-top:10px"></div>
+      </div>
 
-    <button id="adminButton" onclick="ouvrirAdministration()" style="display:none;margin-left:10px;padding:7px 12px;">
-      ⚙️ Administration
-    </button>
-  </div>
-</header>
-
-<main>
-
-<div class="card">
-
-  <h2>1. Choisir la tournée</h2>
-
-  <div class="grid">
-
-    <div>
-
-      <label>Commune</label>
-
-      <select id="commune">
-        <option>Mars-la-Tour</option>
-        <option>Tronville</option>
-        <option>Hannonville-Suzémont</option>
-      </select>
-
+      <div class="card" style="margin-top:14px;background:#fafafa">
+        <h3>🏠 Adresses</h3>
+        <div class="small">Le bouton d'initialisation importe les 702 adresses prévues dans Supabase. Il ne crée pas de doublons.</div>
+        <div class="buttons" style="margin-top:10px">
+          <button class="primary" onclick="initialiserAdressesSupabase()">📥 Initialiser / compléter les 702 adresses</button>
+          <button class="secondary" onclick="chargerAdminAdresses()">🔄 Actualiser les adresses</button>
+          <button class="secondary" onclick="exportCSVAdmin()">⬇️ Exporter toutes les adresses</button>
+        </div>
+        <div id="adminAddresses" style="margin-top:10px"></div>
+      </div>
     </div>
 
-    <div>
-
-      <label>Secteur</label>
-
-      <select id="secteur"></select>
-
+    <div class="card">
+      <h2>1. Choisir la tournée</h2>
+      <div class="grid">
+        <div><label>Commune</label><select id="commune"><option>Mars-la-Tour</option><option>Tronville</option><option>Hannonville-Suzémont</option></select></div>
+        <div><label>Secteur</label><select id="secteur"></select></div>
+      </div>
     </div>
 
-  </div>
+    <div class="card">
+      <div class="row">
+        <div><h2 id="sectorTitle">Secteur</h2><div class="small" id="sectorInfo"></div></div>
+        <div class="small">Adresses préchargées depuis la BAN</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num" id="done">0</div><div class="small">Distribués</div></div>
+        <div class="stat"><div class="num" id="absent">0</div><div class="small">Absents</div></div>
+        <div class="stat"><div class="num" id="refused">0</div><div class="small">Refus</div></div>
+        <div class="stat"><div class="num" id="money">0 €</div><div class="small">Dons</div></div>
+      </div>
+    </div>
 
+    <div class="card">
+      <div class="row">
+        <input id="search" placeholder="🔎 Rechercher une rue ou une adresse..." oninput="renderAddresses()">
+        <select id="filter" onchange="renderAddresses()"><option value="all">Toutes</option><option value="non_fait">À faire</option><option value="absent">Absents à revoir</option><option value="refus">Refus</option><option value="distribue">Distribués</option></select>
+        <button class="secondary" onclick="resetSector()">Réinitialiser le secteur</button>
+      </div>
+      <div id="addresses" style="margin-top:8px"></div>
+      <div id="empty" class="notice hidden">Aucune adresse pour ce secteur.</div>
+    </div>
+
+    <div class="card">
+      <h2>📊 Bilan général</h2>
+      <div id="summary"></div>
+      <div class="buttons" style="margin-top:12px">
+        <button class="primary" onclick="exportCSV()">⬇️ Exporter CSV</button>
+        <button class="secondary" onclick="window.print()">🖨️ Imprimer</button>
+      </div>
+    </div>
+  </main>
 </div>
-
-
-<div class="card">
-
-  <div class="row">
-
-    <div>
-
-      <h2 id="sectorTitle">
-        Secteur
-      </h2>
-
-      <div
-        class="small"
-        id="sectorInfo"
-      ></div>
-
-    </div>
-
-    <div class="small">
-      Adresses préchargées depuis la BAN
-    </div>
-
-  </div>
-
-  <div class="stats">
-
-    <div class="stat">
-      <div class="num" id="done">0</div>
-      <div class="small">Distribués</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="absent">0</div>
-      <div class="small">Absents</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="refused">0</div>
-      <div class="small">Refus</div>
-    </div>
-
-    <div class="stat">
-      <div class="num" id="money">0 €</div>
-      <div class="small">Dons</div>
-    </div>
-
-  </div>
-
-</div>
-
-
-<div class="card">
-
-  <div class="row">
-
-    <input
-      id="search"
-      placeholder="🔎 Rechercher une rue ou une adresse..."
-      oninput="renderAddresses()"
-    >
-
-    <select
-      id="filter"
-      onchange="renderAddresses()"
-    >
-      <option value="all">Toutes</option>
-      <option value="non_fait">À faire</option>
-      <option value="absent">Absents à revoir</option>
-      <option value="refus">Refus</option>
-      <option value="distribue">Distribués</option>
-    </select>
-
-    <button
-      class="secondary"
-      onclick="resetSector()"
-    >
-      Réinitialiser le secteur
-    </button>
-
-  </div>
-
-  <div
-    id="addresses"
-    style="margin-top:8px"
-  ></div>
-
-  <div
-    id="empty"
-    class="notice hidden"
-  >
-    Aucune adresse pour ce secteur.
-  </div>
-
-</div>
-
-
-<div class="card">
-
-  <h2>📊 Bilan général</h2>
-
-  <div id="summary"></div>
-
-  <div
-    class="buttons"
-    style="margin-top:12px"
-  >
-
-    <button
-      class="primary"
-      onclick="exportCSV()"
-    >
-      ⬇️ Exporter CSV
-    </button>
-
-    <button
-      class="secondary"
-      onclick="window.print()"
-    >
-      🖨️ Imprimer
-    </button>
-
-  </div>
-
-</div>
-
-</main>
-
-</div>
-
 
 <script>
+const sectors={"Mars-la-Tour":{"M1":{"count":65,"streets":["Rue du Château","Rue de Verdun","Rue de la Gare","Rue du Clos Friaque","Place Jeanne d'Arc","Rue de la Crépière"]},"M2":{"count":80,"streets":["Rue des Jardins","Lotissement Le Noyer","Rue de Nancy","Lotissement Les Pommiers","Rue du Pré","Rue des Roses"]},"M3":{"count":50,"streets":["Rue du 16 Août 1870","Lotissement Les Cerisiers","Lotissement Clos Vigel","Rue de la Fontaine","Rue des Écoles","Lotissement Les Mirabelliers"]},"M4":{"count":65,"streets":["Rue de la Gendarmerie","Rue du Docteur Georges Thiébaut","Rue de Metz","Rue de Tronville"]}},"Tronville":{"T1":{"count":50,"streets":["Rue de l'Église","Rue de Gorze","Grand-Rue","Rue des Juifs","Rue de Mars-la-Tour","Rue de Puxieux"]}},"Hannonville-Suzémont":{"H1":{"count":50,"streets":["Rue Basse","Rue de la Chavee","Rue de l'Église","Grand-Rue","Rue Haut de Veronne","Chemin de Montant Raye","Chemin de Mougemont","Rue Nationale","Rue Sainte Anne"]}}};
 
-/* ========================= */
-/* SECTEURS */
-/* ========================= */
-
-const sectors = {
-
-  "Mars-la-Tour": {
-
-    "M1":{
-      "count":65,
-      "streets":[
-        "Rue du Château",
-        "Rue de Verdun",
-        "Rue de la Gare",
-        "Rue du Clos Friaque",
-        "Place Jeanne d'Arc",
-        "Rue de la Crépière"
-      ]
-    },
-
-    "M2":{
-      "count":80,
-      "streets":[
-        "Rue des Jardins",
-        "Lotissement Le Noyer",
-        "Rue de Nancy",
-        "Lotissement Les Pommiers",
-        "Rue du Pré",
-        "Rue des Roses"
-      ]
-    },
-
-    "M3":{
-      "count":50,
-      "streets":[
-        "Rue du 16 Août 1870",
-        "Lotissement Les Cerisiers",
-        "Lotissement Clos Vigel",
-        "Rue de la Fontaine",
-        "Rue des Écoles",
-        "Lotissement Les Mirabelliers"
-      ]
-    },
-
-    "M4":{
-      "count":65,
-      "streets":[
-        "Rue de la Gendarmerie",
-        "Rue du Docteur Georges Thiébaut",
-        "Rue de Metz",
-        "Rue de Tronville"
-      ]
-    }
-
-  },
-
-  "Tronville":{
-
-    "T1":{
-      "count":50,
-      "streets":[
-        "Rue de l'Église",
-        "Rue de Gorze",
-        "Grand-Rue",
-        "Rue des Juifs",
-        "Rue de Mars-la-Tour",
-        "Rue de Puxieux"
-      ]
-    }
-
-  },
-
-  "Hannonville-Suzémont":{
-
-    "H1":{
-      "count":50,
-      "streets":[
-        "Rue Basse",
-        "Rue de la Chavee",
-        "Rue de l'Église",
-        "Grand-Rue",
-        "Rue Haut de Veronne",
-        "Chemin de Montant Raye",
-        "Chemin de Mougemont",
-        "Rue Nationale",
-        "Rue Sainte Anne"
-      ]
-    }
-
-  }
-
-};
-
-
-/* ========================= */
-/* ADRESSES BAN */
-/* ========================= */
-
-const preloadedAddresses = {
-
-"Mars-la-Tour":{
-
-"M1":{
-
-"Rue du Château":[
-"2","2bis","4","5","6","7","10","11","12","16","18","20","22","24"
-],
-
-"Rue de Verdun":[
-"1","2","3","4","5","7","8","9","9 bis","10","11","12","13","14",
-"15","16","17","18","19","20","21","22","23","24","25","26","27",
-"27 a","27 b","28","31","32","33","34","35","35 bis","36","37",
-"38","39","39 bis","40","41","42","43","44","45","46","47","48",
-"49","50","51","52","53","54","55","56","58","59","60","61","62",
-"64","65","67","68","69","71","73","75","81","83","85","89","91",
-"93","95","97","99","101","103","103 bis","105"
-],
-
-"Rue de la Gare":["1","3","9"],
-
-"Rue du Clos Friaque":["3","5"],
-
-"Place Jeanne d'Arc":[
-"1","2","3","4","5","6","7","10"
-],
-
-"Rue de la Crépière":[
-"3","5","9","11","11bis","13"
-]
-
-},
-
-"M2":{
-
-"Rue des Jardins":[
-"1","3","5","7","9","11","13","15","16","17","18","19",
-"21","22","23","24","25","27","28","29","30","31","31bis",
-"33","34","36","37"
-],
-
-"Lotissement Le Noyer":[
-"2","3","4","7"
-],
-
-"Rue de Nancy":[
-"3","5","6","7","8","9","10","13","14","15","16","17","18",
-"19","20","21","22","23","23bis","24","25","26","26bis","27",
-"28","29","30","31","32","33","33bis","34","35","36","37",
-"38","39","40","42","43","44","45","46","47","49","50","52",
-"53","55"
-],
-
-"Lotissement Les Pommiers":[
-"1","1bis","2","3","4","5","6","7","8","9","10","11","12",
-"13","14","15","16","17","18","20","21"
-],
-
-"Rue du Pré":[
-"1","2","3","5","7"
-],
-
-"Rue des Roses":[
-"1","2","3","4","5","6","7","8","9","10","11","12","13","14",
-"15","16","17","18","19","20","21","22","23","24","25","26",
-"27","28","29","30","31","32","33","34","35","36","37","38",
-"40","41","42","44"
-]
-
-},
-
-"M3":{
-
-"Rue du 16 Août 1870":[
-"1","1bis","3","5","5bis","7","9","11"
-],
-
-"Lotissement Les Cerisiers":[
-"1","2","3","4","5","6","7","8","9","10","11","12","13","14",
-"15","16","17","18","19","20","21","21bis","22","23","24",
-"25","26","27","28"
-],
-
-"Lotissement Clos Vigel":[
-"1","1bis","2","3","4","5","6","7","7bis","8","9","9bis",
-"10","11","12","13","14","15","16","17","18","20","22"
-],
-
-"Rue de la Fontaine":[
-"1","2"
-],
-
-"Rue des Écoles":[
-"2","4","5"
-],
-
-"Lotissement Les Mirabelliers":[
-"1","2","3","4","5","6","7","8"
-]
-
-},
-
-"M4":{
-
-"Rue de la Gendarmerie":[
-"4","5","6","7","8","8a","8b","8c","8d","8t",
-"10","12","14","16","18","24","26"
-],
-
-"Rue du Docteur Georges Thiébaut":[
-"6","8","10","14","16"
-],
-
-"Rue de Metz":[
-"2","3","4","5","6","7","8","9","10","11","12","13","14",
-"15","15a","15b","15c","15d","15e","15f","15g","15h","15i",
-"16","17","18","20","21","22","23","24","25","26","27","28",
-"29","30","31","32","33","34","36","37","38","39","39bis",
-"40","41","43","44","45","46","47","48","49","50","51","52",
-"53","53a","53b","53c","54","56","57","58","59","60","61",
-"63","65","66","67","68","70","71","74","76","78"
-],
-
-"Rue de Tronville":[
-"1","2","3","6","8","14","16","18","22"
-]
-
-}
-
-},
-
-"Tronville":{
-
-"T1":{
-
-"Rue de l'Église":[
-"1","2","2a","2b","3","5","6","7","8","10","12","12bis",
-"18","20","22","22bis"
-],
-
-"Rue de Gorze":[
-"1","3","5","6","7","8","9","10","10bis","11","12",
-"15","15bis","17","19"
-],
-
-"Grand-Rue":[
-"1","3","4","5","6","7","8","8bis","9","11","12","14",
-"15","16","17","18","19","20","21","22","23","24","26",
-"29","31","37"
-],
-
-"Rue des Juifs":[
-"20","22","24"
-],
-
-"Rue de Mars-la-Tour":[
-"2","5","7","10","11","12","13","14","14bis","15","16",
-"17","18","19","20","22","24","26","28","28a","28b"
-],
-
-"Rue de Puxieux":[
-"1","2","3","4","5","6","7","8","9","10","12","13","14",
-"15","16","17","18","19","20","22","24","25","26","27","28"
-]
-
-}
-
-},
-
-"Hannonville-Suzémont":{
-
-"H1":{
-
-"Rue Basse":[
-"1","7","7bis","7ter","8","8bis","8ter","9","10","10bis",
-"12","14","19"
-],
-
-"Rue de la Chavee":[
-"1","1bis","2","4","6","6bis","7","10","11"
-],
-
-"Rue de l'Église":[
-"9","11","13","13bis","15"
-],
-
-"Grand-Rue":[
-"18","20","21","22","23","23bis","24","25","26","27",
-"29","31","32","34","35","36","37","38","39","40","41",
-"42","43","44","45","46","47","47bis","48","49","50",
-"52","53","54","54bis","55","57","58","59","60","61",
-"64","65","66","67"
-],
-
-"Rue Haut de Veronne":[
-"1","3","4","5","6","7","8","9","10","11","12"
-],
-
-"Chemin de Montant Raye":[
-"1","5","6","7","9","10","15","91"
-],
-
-"Chemin de Mougemont":[
-"2"
-],
-
-"Rue Nationale":[
-"62","66","68","70","71","72","73","74","75","76","77",
-"78","79","80","81","82","85","86","87","89","90","92",
-"92bis","93","93bis","94","95","95b","96","98","99","99a",
-"99b","99c","99d","99e","101","102","103","104","106","108",
-"112","114"
-],
-
-"Rue Sainte Anne":[
-"3","5","7","9","11","11bis","13"
-]
-
-}
-
-}
-
-};
-
-
-/* ========================= */
-/* STOCKAGE LOCAL */
-/* ========================= */
+const preloadedAddresses={"Mars-la-Tour":{"M1":{"Rue du Château":["2","2bis","4","5","6","7","10","11","12","16","18","20","22","24"],"Rue de Verdun":["1","2","3","4","5","7","8","9","9 bis","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","27 a","27 b","28","31","32","33","34","35","35 bis","36","37","38","39","39 bis","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","58","59","60","61","62","64","65","67","68","69","71","73","75","81","83","85","89","91","93","95","97","99","101","103","103 bis","105"],"Rue de la Gare":["1","3","9"],"Rue du Clos Friaque":["3","5"],"Place Jeanne d'Arc":["1","2","3","4","5","6","7","10"],"Rue de la Crépière":["3","5","9","11","11bis","13"]},"M2":{"Rue des Jardins":["1","3","5","7","9","11","13","15","16","17","18","19","21","22","23","24","25","27","28","29","30","31","31bis","33","34","36","37"],"Lotissement Le Noyer":["2","3","4","7"],"Rue de Nancy":["3","5","6","7","8","9","10","13","14","15","16","17","18","19","20","21","22","23","23bis","24","25","26","26bis","27","28","29","30","31","32","33","33bis","34","35","36","37","38","39","40","42","43","44","45","46","47","49","50","52","53","55"],"Lotissement Les Pommiers":["1","1bis","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","20","21"],"Rue du Pré":["1","2","3","5","7"],"Rue des Roses":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","40","41","42","44"]},"M3":{"Rue du 16 Août 1870":["1","1bis","3","5","5bis","7","9","11"],"Lotissement Les Cerisiers":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","21bis","22","23","24","25","26","27","28"],"Lotissement Clos Vigel":["1","1bis","2","3","4","5","6","7","7bis","8","9","9bis","10","11","12","13","14","15","16","17","18","20","22"],"Rue de la Fontaine":["1","2"],"Rue des Écoles":["2","4","5"],"Lotissement Les Mirabelliers":["1","2","3","4","5","6","7","8"]},"M4":{"Rue de la Gendarmerie":["4","5","6","7","8","8a","8b","8c","8d","8t","10","12","14","16","18","24","26"],"Rue du Docteur Georges Thiébaut":["6","8","10","14","16"],"Rue de Metz":["2","3","4","5","6","7","8","9","10","11","12","13","14","15","15a","15b","15c","15d","15e","15f","15g","15h","15i","16","17","18","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","36","37","38","39","39bis","40","41","43","44","45","46","47","48","49","50","51","52","53","53a","53b","53c","54","56","57","58","59","60","61","63","65","66","67","68","70","71","74","76","78"],"Rue de Tronville":["1","2","3","6","8","14","16","18","22"]}},"Tronville":{"T1":{"Rue de l'Église":["1","2","2a","2b","3","5","6","7","8","10","12","12bis","18","20","22","22bis"],"Rue de Gorze":["1","3","5","6","7","8","9","10","10bis","11","12","15","15bis","17","19"],"Grand-Rue":["1","3","4","5","6","7","8","8bis","9","11","12","14","15","16","17","18","19","20","21","22","23","24","26","29","31","37"],"Rue des Juifs":["20","22","24"],"Rue de Mars-la-Tour":["2","5","7","10","11","12","13","14","14bis","15","16","17","18","19","20","22","24","26","28","28a","28b"],"Rue de Puxieux":["1","2","3","4","5","6","7","8","9","10","12","13","14","15","16","17","18","19","20","22","24","25","26","27","28"]}},"Hannonville-Suzémont":{"H1":{"Rue Basse":["1","7","7bis","7ter","8","8bis","8ter","9","10","10bis","12","14","19"],"Rue de la Chavee":["1","1bis","2","4","6","6bis","7","10","11"],"Rue de l'Église":["9","11","13","13bis","15"],"Grand-Rue":["18","20","21","22","23","23bis","24","25","26","27","29","31","32","34","35","36","37","38","39","40","41","42","43","44","45","46","47","47bis","48","49","50","52","53","54","54bis","55","57","58","59","60","61","64","65","66","67"],"Rue Haut de Veronne":["1","3","4","5","6","7","8","9","10","11","12"],"Chemin de Montant Raye":["1","5","6","7","9","10","15","91"],"Chemin de Mougemont":["2"],"Rue Nationale":["62","66","68","70","71","72","73","74","75","76","77","78","79","80","81","82","85","86","87","89","90","92","92bis","93","93bis","94","95","95b","96","98","99","99a","99b","99c","99d","99e","101","102","103","104","106","108","112","114"],"Rue Sainte Anne":["3","5","7","9","11","11bis","13"]}}};
 
 const STORAGE='tournee_calendriers_2026_v3';
-
 let commune=document.getElementById('commune');
 let secteur=document.getElementById('secteur');
 
-
-function sectorKey(c,s){
-  return c+'||'+s;
-}
-
-
-function buildPreload(c,s){
-
-  const streets=preloadedAddresses[c]?.[s]||{};
-
-  return Object.entries(streets).flatMap(
-    ([street,nums]) =>
-      nums.map(
-        number => ({
-          street,
-          number,
-          status:'non_fait',
-          don:0,
-          note:''
-        })
-      )
-  );
-
-}
-
-
-function loadAll(){
-
-  try{
-    return JSON.parse(
-      localStorage.getItem(STORAGE)||'{}'
-    );
-  }
-
-  catch(e){
-    return {};
-  }
-
-}
-
-
-function saveAll(x){
-  localStorage.setItem(
-    STORAGE,
-    JSON.stringify(x)
-  );
-}
-
-
-function ensureData(){
-
-  const all=loadAll();
-
-  for(
-    const c of Object.keys(sectors)
-  ){
-
-    for(
-      const s of Object.keys(sectors[c])
-    ){
-
-      const k=sectorKey(c,s);
-
-      const base=buildPreload(c,s);
-
-      const old=
-        Array.isArray(all[k])
-        ? all[k]
-        : [];
-
-      const map=new Map(
-        old.map(
-          a=>[
-            a.street+'||'+a.number,
-            a
-          ]
-        )
-      );
-
-      all[k]=base.map(
-        a=>
-          map.get(
-            a.street+'||'+a.number
-          )||a
-      );
-
-    }
-
-  }
-
-  saveAll(all);
-
-  return all;
-}
-
-
-function getAddresses(){
-
-  return ensureData()[
-    sectorKey(
-      commune.value,
-      secteur.value
-    )
-  ]||[];
-
-}
-
-
-function refreshSectors(){
-
-  secteur.innerHTML='';
-
-  Object.keys(
-    sectors[commune.value]
-  ).forEach(
-    s=>{
-
-      const o=
-        document.createElement('option');
-
-      o.value=s;
-      o.textContent=s;
-
-      secteur.appendChild(o);
-
-    }
-  );
-
-  renderAll();
-
-}
-
-
+function sectorKey(c,s){return c+'||'+s}
+function buildPreload(c,s){const streets=preloadedAddresses[c]?.[s]||{};return Object.entries(streets).flatMap(([street,nums])=>nums.map(number=>({street,number,status:'non_fait',don:0,note:''})));}
+function loadAll(){try{return JSON.parse(localStorage.getItem(STORAGE)||'{}')}catch(e){return {}}}
+function saveAll(x){localStorage.setItem(STORAGE,JSON.stringify(x))}
+function ensureData(){const all=loadAll();for(const c of Object.keys(sectors))for(const s of Object.keys(sectors[c])){const k=sectorKey(c,s),base=buildPreload(c,s),old=Array.isArray(all[k])?all[k]:[];const map=new Map(old.map(a=>[a.street+'||'+a.number,a]));all[k]=base.map(a=>map.get(a.street+'||'+a.number)||a)}saveAll(all);return all}
+function getAddresses(){return ensureData()[sectorKey(commune.value,secteur.value)]||[]}
+function refreshSectors(){secteur.innerHTML='';Object.keys(sectors[commune.value]).forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;secteur.appendChild(o)});renderAll()}
 commune.onchange=refreshSectors;
 secteur.onchange=renderAll;
+function stats(a){return {done:a.filter(x=>x.status==='distribue').length,absent:a.filter(x=>x.status==='absent').length,refused:a.filter(x=>x.status==='refus').length,money:a.reduce((n,x)=>n+(Number(x.don)||0),0)}}
+function renderAll(){const s=sectors[commune.value][secteur.value],a=getAddresses(),st=stats(a);document.getElementById('sectorTitle').textContent=commune.value+' — '+secteur.value;document.getElementById('sectorInfo').textContent=s.count+' calendriers prévus · '+a.length+' adresses BAN préchargées · '+s.streets.length+' rues/zones';document.getElementById('done').textContent=st.done;document.getElementById('absent').textContent=st.absent;document.getElementById('refused').textContent=st.refused;document.getElementById('money').textContent=st.money.toFixed(2)+' €';renderAddresses();summary()}
+function renderAddresses(){const arr=getAddresses(),q=(document.getElementById('search').value||'').toLowerCase().trim(),f=document.getElementById('filter').value,box=document.getElementById('addresses');box.innerHTML='';const filtered=arr.map((a,i)=>({a,i})).filter(x=>(x.a.street+' '+x.a.number).toLowerCase().includes(q)&&(f==='all'||x.a.status===f));document.getElementById('empty').classList.toggle('hidden',filtered.length>0);let last='';filtered.forEach(({a,i})=>{if(a.street!==last){const h=document.createElement('div');h.className='small';h.style.cssText='font-weight:800;margin:14px 0 4px;text-transform:uppercase';h.textContent=a.street;box.appendChild(h);last=a.street}const div=document.createElement('div');div.className='address';const badge=a.status==='distribue'?'🟢 Distribué':a.status==='absent'?'🟠 Absent':a.status==='refus'?'🔴 Refus':'⚪ Non fait';div.innerHTML='<div><div class="addr">'+esc(a.number)+' '+esc(a.street)+'</div><span class="badge">'+badge+'</span>'+(a.note?'<div class="small">'+esc(a.note)+'</div>':'')+'</div><div class="buttons"><button class="success" onclick="setStatus('+i+',\'distribue\')">Distribué</button><button class="warn" onclick="setStatus('+i+',\'absent\')">Absent</button><button class="danger" onclick="setStatus('+i+',\'refus\')">Refus</button><button class="secondary" onclick="editAddress('+i+')">✏️</button></div>';box.appendChild(div)});const n=document.createElement('div');n.className='small';n.style.marginTop='10px';n.textContent=filtered.length+' adresse(s) affichée(s) sur '+arr.length;box.appendChild(n)}
+function setStatus(i,status){const all=loadAll(),k=sectorKey(commune.value,secteur.value),a=all[k]||[];if(!a[i])return;if(status==='distribue'){const amount=prompt('Montant du don (€) — mettre 0 si aucun don :',String(a[i].don??0));if(amount===null)return;const v=parseFloat(String(amount).replace(',','.'));if(!Number.isFinite(v)||v<0){alert('Montant invalide');return}a[i].don=v}else a[i].don=0;a[i].status=status;all[k]=a;saveAll(all);renderAll()}
+function editAddress(i){const all=loadAll(),k=sectorKey(commune.value,secteur.value),a=all[k]||[];if(!a[i])return;const num=prompt('Numéro de l\'adresse',a[i].number);if(num===null)return;const note=prompt('Observation pour '+num.trim()+' '+a[i].street,a[i].note||'');if(note===null)return;a[i].number=num.trim();a[i].note=note;all[k]=a;saveAll(all);renderAll()}
+function resetSector(){if(!confirm('Réinitialiser les statuts, dons et observations de ce secteur ?'))return;const all=loadAll(),k=sectorKey(commune.value,secteur.value);all[k]=buildPreload(commune.value,secteur.value);saveAll(all);renderAll()}
+function summary(){const all=ensureData();let html='<table><tr><th>Secteur</th><th>Prévu</th><th>Adresses</th><th>Distribués</th><th>Absents</th><th>Refus</th><th>Dons</th></tr>',td=0,ta=0,tr=0,tm=0;for(const c of Object.keys(sectors))for(const s of Object.keys(sectors[c])){const a=all[sectorKey(c,s)]||[],x=stats(a),planned=sectors[c][s].count;td+=x.done;ta+=x.absent;tr+=x.refused;tm+=x.money;html+='<tr><td>'+esc(c)+' — '+esc(s)+'</td><td>'+planned+'</td><td>'+a.length+'</td><td>'+x.done+'</td><td>'+x.absent+'</td><td>'+x.refused+'</td><td>'+x.money.toFixed(2)+' €</td></tr>'}html+='<tr><th>TOTAL</th><th>360</th><th>702</th><th>'+td+'</th><th>'+ta+'</th><th>'+tr+'</th><th>'+tm.toFixed(2)+' €</th></tr></table><p class="small">400 calendriers au total · 25 réservés partenaires/institutions · 15 en réserve · 360 affectés aux secteurs.</p>';document.getElementById('summary').innerHTML=html}
+function exportCSV(){const all=ensureData(),rows=[['Commune','Secteur','Rue','Numéro','Statut','Don (€)','Observation']];for(const c of Object.keys(sectors))for(const s of Object.keys(sectors[c]))for(const a of all[sectorKey(c,s)]||[])rows.push([c,s,a.street,a.number,a.status,a.don||0,a.note||'']);const csv=rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='suivi_tournee_calendriers_2026.csv';a.click();URL.revokeObjectURL(url)}
+function esc(x){return String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 
-
-function stats(a){
-
-  return {
-
-    done:
-      a.filter(
-        x=>x.status==='distribue'
-      ).length,
-
-    absent:
-      a.filter(
-        x=>x.status==='absent'
-      ).length,
-
-    refused:
-      a.filter(
-        x=>x.status==='refus'
-      ).length,
-
-    money:
-      a.reduce(
-        (n,x)=>n+(Number(x.don)||0),
-        0
-      )
-
-  };
-
+// ---------------- AUTHENTIFICATION ----------------
+function afficherConnexion(message=''){
+  document.getElementById('loginScreen').classList.remove('hidden');
+  document.getElementById('appContent').classList.add('hidden');
+  document.getElementById('adminButton').style.display='none';
+  document.getElementById('userEmail').textContent='';
+  document.getElementById('adminPanel').classList.remove('open');
+  document.getElementById('loginMessage').textContent=message;
 }
 
-
-function renderAll(){
-
-  const s=
-    sectors[
-      commune.value
-    ][
-      secteur.value
-    ];
-
-  const a=getAddresses();
-
-  const st=stats(a);
-
-  document.getElementById(
-    'sectorTitle'
-  ).textContent=
-    commune.value+' — '+secteur.value;
-
-  document.getElementById(
-    'sectorInfo'
-  ).textContent=
-    s.count+
-    ' calendriers prévus · '+
-    a.length+
-    ' adresses BAN préchargées · '+
-    s.streets.length+
-    ' rues/zones';
-
-  document.getElementById(
-    'done'
-  ).textContent=st.done;
-
-  document.getElementById(
-    'absent'
-  ).textContent=st.absent;
-
-  document.getElementById(
-    'refused'
-  ).textContent=st.refused;
-
-  document.getElementById(
-    'money'
-  ).textContent=
-    st.money.toFixed(2)+' €';
-
-  renderAddresses();
-
-  summary();
-
-}
-
-
-function renderAddresses(){
-
-  const arr=getAddresses();
-
-  const q=
-    (
-      document.getElementById(
-        'search'
-      ).value||''
-    )
-    .toLowerCase()
-    .trim();
-
-  const f=
-    document.getElementById(
-      'filter'
-    ).value;
-
-  const box=
-    document.getElementById(
-      'addresses'
-    );
-
-  box.innerHTML='';
-
-  const filtered=
-    arr
-    .map(
-      (a,i)=>({a,i})
-    )
-    .filter(
-      x=>
-        (
-          x.a.street+
-          ' '+
-          x.a.number
-        )
-        .toLowerCase()
-        .includes(q)
-        &&
-        (
-          f==='all'
-          ||
-          x.a.status===f
-        )
-    );
-
-  document.getElementById(
-    'empty'
-  ).classList.toggle(
-    'hidden',
-    filtered.length>0
-  );
-
-  let last='';
-
-  filtered.forEach(
-    ({a,i})=>{
-
-      if(a.street!==last){
-
-        const h=
-          document.createElement(
-            'div'
-          );
-
-        h.className='small';
-
-        h.style.cssText=
-          'font-weight:800;margin:14px 0 4px;text-transform:uppercase';
-
-        h.textContent=a.street;
-
-        box.appendChild(h);
-
-        last=a.street;
-
-      }
-
-      const div=
-        document.createElement(
-          'div'
-        );
-
-      div.className='address';
-
-      const badge=
-        a.status==='distribue'
-        ?'🟢 Distribué'
-        :a.status==='absent'
-        ?'🟠 Absent'
-        :a.status==='refus'
-        ?'🔴 Refus'
-        :'⚪ Non fait';
-
-      div.innerHTML=
-        '<div>'+
-          '<div class="addr">'+
-            esc(a.number)+
-            ' '+
-            esc(a.street)+
-          '</div>'+
-          '<span class="badge">'+
-            badge+
-          '</span>'+
-          (
-            a.note
-            ?'<div class="small">'+
-              esc(a.note)+
-             '</div>'
-            :''
-          )+
-        '</div>'+
-        '<div class="buttons">'+
-          '<button class="success" onclick="setStatus('+i+',\'distribue\')">'+
-            'Distribué'+
-          '</button>'+
-          '<button class="warn" onclick="setStatus('+i+',\'absent\')">'+
-            'Absent'+
-          '</button>'+
-          '<button class="danger" onclick="setStatus('+i+',\'refus\')">'+
-            'Refus'+
-          '</button>'+
-          '<button class="secondary" onclick="editAddress('+i+')">'+
-            '✏️'+
-          '</button>'+
-        '</div>';
-
-      box.appendChild(div);
-
-    }
-  );
-
-  const n=
-    document.createElement('div');
-
-  n.className='small';
-
-  n.style.marginTop='10px';
-
-  n.textContent=
-    filtered.length+
-    ' adresse(s) affichée(s) sur '+
-    arr.length;
-
-  box.appendChild(n);
-
-}
-
-
-function setStatus(i,status){
-
-  const all=loadAll();
-
-  const k=
-    sectorKey(
-      commune.value,
-      secteur.value
-    );
-
-  const a=all[k]||[];
-
-  if(!a[i])return;
-
-  if(status==='distribue'){
-
-    const amount=
-      prompt(
-        'Montant du don (€) — mettre 0 si aucun don :',
-        String(
-          a[i].don??0
-        )
-      );
-
-    if(amount===null)return;
-
-    const v=
-      parseFloat(
-        String(amount)
-        .replace(',','.')
-      );
-
-    if(
-      !Number.isFinite(v)
-      ||
-      v<0
-    ){
-
-      alert(
-        'Montant invalide'
-      );
-
-      return;
-
-    }
-
-    a[i].don=v;
-
-  }
-
-  else{
-
-    a[i].don=0;
-
-  }
-
-  a[i].status=status;
-
-  all[k]=a;
-
-  saveAll(all);
-
-  renderAll();
-
-}
-
-
-function editAddress(i){
-
-  const all=loadAll();
-
-  const k=
-    sectorKey(
-      commune.value,
-      secteur.value
-    );
-
-  const a=all[k]||[];
-
-  if(!a[i])return;
-
-  const num=
-    prompt(
-      "Numéro de l'adresse",
-      a[i].number
-    );
-
-  if(num===null)return;
-
-  const note=
-    prompt(
-      'Observation pour '+
-      num.trim()+
-      ' '+
-      a[i].street,
-      a[i].note||''
-    );
-
-  if(note===null)return;
-
-  a[i].number=num.trim();
-
-  a[i].note=note;
-
-  all[k]=a;
-
-  saveAll(all);
-
-  renderAll();
-
-}
-
-
-function resetSector(){
-
-  if(
-    !confirm(
-      'Réinitialiser les statuts, dons et observations de ce secteur ?'
-    )
-  )return;
-
-  const all=loadAll();
-
-  const k=
-    sectorKey(
-      commune.value,
-      secteur.value
-    );
-
-  all[k]=
-    buildPreload(
-      commune.value,
-      secteur.value
-    );
-
-  saveAll(all);
-
-  renderAll();
-
-}
-
-
-function summary(){
-
-  const all=ensureData();
-
-  let html=
-    '<table>'+
-    '<tr>'+
-    '<th>Secteur</th>'+
-    '<th>Prévu</th>'+
-    '<th>Adresses</th>'+
-    '<th>Distribués</th>'+
-    '<th>Absents</th>'+
-    '<th>Refus</th>'+
-    '<th>Dons</th>'+
-    '</tr>';
-
-  let td=0;
-  let ta=0;
-  let tr=0;
-  let tm=0;
-
-  for(
-    const c of Object.keys(sectors)
-  ){
-
-    for(
-      const s of Object.keys(sectors[c])
-    ){
-
-      const a=
-        all[
-          sectorKey(c,s)
-        ]||[];
-
-      const x=stats(a);
-
-      const planned=
-        sectors[c][s].count;
-
-      td+=x.done;
-      ta+=x.absent;
-      tr+=x.refused;
-      tm+=x.money;
-
-      html+=
-        '<tr>'+
-          '<td>'+
-            esc(c)+
-            ' — '+
-            esc(s)+
-          '</td>'+
-          '<td>'+
-            planned+
-          '</td>'+
-          '<td>'+
-            a.length+
-          '</td>'+
-          '<td>'+
-            x.done+
-          '</td>'+
-          '<td>'+
-            x.absent+
-          '</td>'+
-          '<td>'+
-            x.refused+
-          '</td>'+
-          '<td>'+
-            x.money.toFixed(2)+
-            ' €'+
-          '</td>'+
-        '</tr>';
-
-    }
-
-  }
-
-  html+=
-    '<tr>'+
-      '<th>TOTAL</th>'+
-      '<th>360</th>'+
-      '<th>702</th>'+
-      '<th>'+td+'</th>'+
-      '<th>'+ta+'</th>'+
-      '<th>'+tr+'</th>'+
-      '<th>'+
-        tm.toFixed(2)+
-        ' €'+
-      '</th>'+
-    '</tr>'+
-    '</table>'+
-    '<p class="small">'+
-      '400 calendriers au total · '+
-      '25 réservés partenaires/institutions · '+
-      '15 en réserve · '+
-      '360 affectés aux secteurs.'+
-    '</p>';
-
-  document.getElementById(
-    'summary'
-  ).innerHTML=html;
-
-}
-
-
-function exportCSV(){
-
-  const all=ensureData();
-
-  const rows=[
-    [
-      'Commune',
-      'Secteur',
-      'Rue',
-      'Numéro',
-      'Statut',
-      'Don (€)',
-      'Observation'
-    ]
-  ];
-
-  for(
-    const c of Object.keys(sectors)
-  ){
-
-    for(
-      const s of Object.keys(sectors[c])
-    ){
-
-      for(
-        const a of
-        all[
-          sectorKey(c,s)
-        ]||[]
-      ){
-
-        rows.push([
-          c,
-          s,
-          a.street,
-          a.number,
-          a.status,
-          a.don||0,
-          a.note||''
-        ]);
-
-      }
-
-    }
-
-  }
-
-  const csv=
-    rows
-    .map(
-      r=>
-        r.map(
-          v=>
-            '"'+
-            String(v)
-            .replaceAll('"','""')+
-            '"'
-        )
-        .join(';')
-    )
-    .join('\n');
-
-  const blob=
-    new Blob(
-      ['\ufeff'+csv],
-      {
-        type:
-          'text/csv;charset=utf-8'
-      }
-    );
-
-  const url=
-    URL.createObjectURL(blob);
-
-  const a=
-    document.createElement('a');
-
-  a.href=url;
-
-  a.download=
-    'suivi_tournee_calendriers_2026.csv';
-
-  a.click();
-
-  URL.revokeObjectURL(url);
-
-}
-
-
-function esc(x){
-
-  return String(x).replace(
-    /[&<>"']/g,
-    m=>({
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      '"':'&quot;',
-      "'":'&#39;'
-    }[m])
-  );
-
-}
-
-
-/* ========================= */
-/* CONNEXION SUPABASE */
-/* ========================= */
-
-async function seConnecter(){
-
-  const email=
-    document.getElementById(
-      'loginEmail'
-    ).value.trim();
-
-  const password=
-    document.getElementById(
-      'loginPassword'
-    ).value;
-
-  const message=
-    document.getElementById(
-      'loginMessage'
-    );
-
-  if(!email||!password){
-
-    message.textContent=
-      'Veuillez renseigner votre e-mail et votre mot de passe.';
-
-    return;
-
-  }
-  async function seDeconnecter() {
-  await supabaseClient.auth.signOut();
-  document.getElementById("userEmail").textContent = "";
-  document.getElementById("loginScreen").style.display = "block";
-  document.getElementById("appContent").style.display = "none";
-}
-
-  message.textContent=
-    'Connexion en cours...';
-
-  const {
-    data,
-    error
-  }=
-    await supabaseClient.auth.signInWithPassword({
-
-      email:email,
-      password:password
-
-    });
-
-  if(error){
-
-    console.error(error);
-
-    message.textContent=
-      'Erreur de connexion : '+
-      error.message;
-
-    return;
-
-  }
-
-  message.textContent=
-    'Connexion réussie !';
-
-  afficherApplication();
-
-function afficherApplication(){
-
-  document
-    .getElementById('loginScreen')
-    .classList.add('hidden');
-
-  document
-    .getElementById('appContent')
-    .classList.remove('hidden');
-
-  // Récupère le compte actuellement connecté
-  supabaseClient.auth.getSession().then(({ data }) => {
-
-    const session = data.session;
-    const email = session?.user?.email || "";
-
-    // Affiche l'e-mail
-    const userEmail = document.getElementById('userEmail');
-
-    if (userEmail) {
-      userEmail.textContent = email;
-    }
-
-    // Vérifie si l'utilisateur est administrateur
-    if (session?.user?.id) {
-
-      supabaseClient
-        .from('profiles')
-        .select('role')
-        .eq('id', session.user.id)
-        .single()
-        .then(({ data: profile }) => {
-
-          const adminButton = document.getElementById('adminButton');
-
-          if (adminButton) {
-            adminButton.style.display =
-              profile?.role === 'admin' ? 'inline-block' : 'none';
-          }
-
-        });
-
-    }
-
-  });
+async function afficherApplication(session){
+  if(!session || !session.user){afficherConnexion();return;}
+  document.getElementById('loginScreen').classList.add('hidden');
+  document.getElementById('appContent').classList.remove('hidden');
+  document.getElementById('userEmail').textContent=session.user.email||'';
+
+  const adminButton=document.getElementById('adminButton');
+  adminButton.style.display='none';
+
+  const {data:profile,error}=await supabaseClient
+    .from('profiles')
+    .select('role')
+    .eq('id',session.user.id)
+    .maybeSingle();
+
+  if(!error && profile?.role==='admin') adminButton.style.display='inline-block';
 
   ensureData();
-
   refreshSectors();
-
 }
 
-
-function afficherConnexion(){
-
-  document
-    .getElementById('appContent')
-    .classList.add('hidden');
-
-  document
-    .getElementById('loginScreen')
-    .classList.remove('hidden');
-
-  document.getElementById(
-    'loginMessage'
-  ).textContent='';
-
+async function seConnecter(){
+  const email=document.getElementById('loginEmail').value.trim();
+  const password=document.getElementById('loginPassword').value;
+  const message=document.getElementById('loginMessage');
+  if(!email||!password){message.textContent='Veuillez renseigner votre e-mail et votre mot de passe.';return;}
+  message.textContent='Connexion en cours...';
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error){console.error(error);message.textContent='Erreur de connexion : '+error.message;return;}
+  message.textContent='';
+  await afficherApplication(data.session);
 }
 
+async function seDeconnecter(){
+  const {error}=await supabaseClient.auth.signOut();
+  if(error) console.error(error);
+  afficherConnexion();
+}
 
 async function verifierSession(){
-
-  const {
-    data,
-    error
-  }=
-    await supabaseClient.auth.getSession();
-
-  if(error){
-
-    console.error(error);
-
-    afficherConnexion();
-
-    return;
-
-  }
-
-  if(data.session){
-
-    afficherApplication();
-
-  }
-
-  else{
-
-    afficherConnexion();
-
-  }
-
+  const {data,error}=await supabaseClient.auth.getSession();
+  if(error){console.error(error);afficherConnexion('Impossible de vérifier la session.');return;}
+  if(data.session) await afficherApplication(data.session);
+  else afficherConnexion();
 }
 
+supabaseClient.auth.onAuthStateChange((event,session)=>{
+  if(event==='SIGNED_OUT') afficherConnexion();
+});
 
-/* ========================= */
-/* DÉMARRAGE */
-/* ========================= */
+// ---------------- ADMINISTRATION ----------------
+let adminUsersCache=[];
+let adminSectorsCache=[];
+let adminAddressesCache=[];
 
+async function isAdmin(){
+  const {data:sessionData}=await supabaseClient.auth.getSession();
+  const session=sessionData?.session;
+  if(!session) return false;
+  const {data:profile}=await supabaseClient.from('profiles').select('role').eq('id',session.user.id).maybeSingle();
+  return profile?.role==='admin';
+}
+
+async function ouvrirAdministration(){
+  if(!(await isAdmin())){alert('Accès réservé à l’administrateur.');return;}
+  document.getElementById('adminPanel').classList.add('open');
+  await chargerAdministration();
+}
+function fermerAdministration(){document.getElementById('adminPanel').classList.remove('open')}
+
+async function chargerAdministration(){
+  const msg=document.getElementById('adminMessage');
+  msg.textContent='Chargement de l’administration...';
+  const [u,s]=await Promise.all([
+    supabaseClient.from('profiles').select('id,nom,role,created_at').order('role').order('nom'),
+    supabaseClient.from('secteurs').select('id,code,commune,nb_calendriers').order('commune').order('code')
+  ]);
+  if(u.error||s.error){console.error(u.error,s.error);msg.textContent='Erreur : '+(u.error?.message||s.error?.message);return;}
+  adminUsersCache=u.data||[]; adminSectorsCache=s.data||[];
+  const {data:assign,error:assignError}=await supabaseClient.from('vendeur_secteurs').select('vendeur_id,secteur_id');
+  if(assignError){msg.textContent='Erreur lors du chargement des attributions : '+assignError.message;return;}
+  renderAdminUsers(assign||[]);
+  renderAdminSectors(assign||[]);
+  await chargerAdminAdresses();
+  msg.textContent='Administration chargée. Les modifications sont enregistrées dans Supabase.';
+}
+
+function renderAdminUsers(assignments){
+  const box=document.getElementById('adminUsers');
+  if(!adminUsersCache.length){box.innerHTML='<div class="small">Aucun profil.</div>';return;}
+  let html='<div style="overflow:auto"><table><tr><th>Compte</th><th>Nom affiché</th><th>Rôle</th><th>Secteurs</th><th>Actions</th></tr>';
+  for(const u of adminUsersCache){
+    const ids=assignments.filter(a=>a.vendeur_id===u.id).map(a=>a.secteur_id);
+    html+='<tr><td>'+esc(u.nom||'')+'</td><td><input id="nom_'+u.id+'" value="'+esc(u.nom||'')+'"></td><td><select id="role_'+u.id+'"><option value="vendeur" '+(u.role==='vendeur'?'selected':'')+'>Vendeur</option><option value="admin" '+(u.role==='admin'?'selected':'')+'>Administrateur</option></select></td><td>';
+    for(const sec of adminSectorsCache){html+='<label style="font-weight:400;margin:2px 0"><input type="checkbox" class="assign_'+u.id+'" value="'+sec.id+'" '+(ids.includes(sec.id)?'checked':'')+'> '+esc(sec.code)+' — '+esc(sec.commune)+'</label>';}
+    html+='</td><td><button class="success" onclick="sauverUtilisateur(\''+u.id+'\')">💾 Enregistrer</button></td></tr>';
+  }
+  html+='</table></div>';
+  box.innerHTML=html;
+}
+
+async function sauverUtilisateur(id){
+  if(!(await isAdmin())) return;
+  const nom=document.getElementById('nom_'+id).value.trim();
+  const role=document.getElementById('role_'+id).value;
+  const {error:e1}=await supabaseClient.from('profiles').update({nom,role}).eq('id',id);
+  if(e1){alert('Erreur profil : '+e1.message);return;}
+  const selected=[...document.querySelectorAll('.assign_'+id+':checked')].map(x=>Number(x.value));
+  const {error:e2}=await supabaseClient.from('vendeur_secteurs').delete().eq('vendeur_id',id);
+  if(e2){alert('Erreur suppression des anciennes attributions : '+e2.message);return;}
+  if(selected.length){
+    const rows=selected.map(secteur_id=>({vendeur_id:id,secteur_id}));
+    const {error:e3}=await supabaseClient.from('vendeur_secteurs').insert(rows);
+    if(e3){alert('Erreur attribution : '+e3.message);return;}
+  }
+  // Un secteur ne peut être vendu que par un vendeur à la fois dans cette application.
+  // Les adresses du secteur sont donc rattachées au vendeur sélectionné. Si aucun vendeur,
+  // elles restent sans attribution.
+  for(const sec of adminSectorsCache){
+    const shouldOwn=selected.includes(sec.id);
+    if(shouldOwn) await supabaseClient.from('adresses').update({vendeur_id:id}).eq('secteur_code',sec.code).eq('commune',sec.commune);
+    else {
+      const {data:other}=await supabaseClient.from('vendeur_secteurs').select('vendeur_id').eq('secteur_id',sec.id).limit(1).maybeSingle();
+      if(!other) await supabaseClient.from('adresses').update({vendeur_id:null}).eq('secteur_code',sec.code).eq('commune',sec.commune);
+    }
+  }
+  alert('Compte et attributions enregistrés.');
+  await chargerAdministration();
+}
+
+function renderAdminSectors(assignments){
+  const box=document.getElementById('adminSectors');
+  if(!adminSectorsCache.length){box.innerHTML='<div class="small">Aucun secteur.</div>';return;}
+  let html='<div style="overflow:auto"><table><tr><th>Code</th><th>Commune</th><th>Calendriers</th><th>Vendeur(s)</th><th>Actions</th></tr>';
+  for(const s of adminSectorsCache){
+    const names=assignments.filter(a=>a.secteur_id===s.id).map(a=>adminUsersCache.find(u=>u.id===a.vendeur_id)?.nom||'Compte');
+    html+='<tr><td><input id="sc_'+s.id+'" value="'+esc(s.code)+'"></td><td><input id="sm_'+s.id+'" value="'+esc(s.commune)+'"></td><td><input id="sn_'+s.id+'" type="number" min="0" value="'+esc(s.nb_calendriers)+'"></td><td>'+esc(names.join(', ')||'Non attribué')+'</td><td><button class="success" onclick="modifierSecteur('+s.id+')">💾</button> <button class="danger" onclick="supprimerSecteur('+s.id+')">🗑️</button></td></tr>';
+  }
+  html+='</table></div>';
+  box.innerHTML=html;
+}
+
+async function ajouterSecteur(){
+  if(!(await isAdmin())) return;
+  const code=document.getElementById('adminSectorCode').value.trim();
+  const commune=document.getElementById('adminSectorCommune').value.trim();
+  const nb=Number(document.getElementById('adminSectorCount').value)||0;
+  if(!code||!commune){alert('Renseigne le code et la commune.');return;}
+  const {error}=await supabaseClient.from('secteurs').insert({code,commune,nb_calendriers:nb});
+  if(error){alert('Impossible d’ajouter le secteur : '+error.message);return;}
+  document.getElementById('adminSectorCode').value='';document.getElementById('adminSectorCommune').value='';document.getElementById('adminSectorCount').value='0';
+  await chargerAdministration();
+}
+
+async function modifierSecteur(id){
+  if(!(await isAdmin())) return;
+  const sec=adminSectorsCache.find(x=>x.id===id); if(!sec)return;
+  const code=document.getElementById('sc_'+id).value.trim();
+  const commune=document.getElementById('sm_'+id).value.trim();
+  const nb=Number(document.getElementById('sn_'+id).value)||0;
+  if(!code||!commune){alert('Code et commune obligatoires.');return;}
+  const oldCode=sec.code,oldCommune=sec.commune;
+  const {error}=await supabaseClient.from('secteurs').update({code,commune,nb_calendriers:nb}).eq('id',id);
+  if(error){alert('Erreur modification secteur : '+error.message);return;}
+  if(code!==oldCode||commune!==oldCommune){
+    const {error:e2}=await supabaseClient.from('adresses').update({secteur_code:code,commune}).eq('secteur_code',oldCode).eq('commune',oldCommune);
+    if(e2) alert('Secteur modifié, mais certaines adresses n’ont pas pu être déplacées : '+e2.message);
+  }
+  await chargerAdministration();
+}
+
+async function supprimerSecteur(id){
+  if(!(await isAdmin())) return;
+  const sec=adminSectorsCache.find(x=>x.id===id);if(!sec)return;
+  if(!confirm('Supprimer le secteur '+sec.code+' ? Les attributions seront supprimées. Les adresses seront conservées mais ne seront plus rattachées à un secteur existant.'))return;
+  await supabaseClient.from('vendeur_secteurs').delete().eq('secteur_id',id);
+  const {error}=await supabaseClient.from('secteurs').delete().eq('id',id);
+  if(error){alert('Impossible de supprimer : '+error.message);return;}
+  await supabaseClient.from('adresses').update({vendeur_id:null}).eq('secteur_code',sec.code).eq('commune',sec.commune);
+  await chargerAdministration();
+}
+
+async function initialiserAdressesSupabase(){
+  if(!(await isAdmin())) return;
+  if(!confirm('Importer/completer les 702 adresses prévues ? Les adresses déjà présentes ne seront pas dupliquées.'))return;
+  const rows=[];
+  for(const c of Object.keys(preloadedAddresses)) for(const s of Object.keys(preloadedAddresses[c])) for(const street of Object.keys(preloadedAddresses[c][s])) for(const number of preloadedAddresses[c][s][street]) rows.push({commune:c,secteur_code:s,rue:street,numero:String(number),statut:'non_fait',don:0});
+  const {data:existing,error:er}=await supabaseClient.from('adresses').select('commune,secteur_code,rue,numero');
+  if(er){alert('Erreur lecture adresses : '+er.message);return;}
+  const seen=new Set((existing||[]).map(a=>[a.commune,a.secteur_code,a.rue,a.numero].join('||')));
+  const missing=rows.filter(a=>!seen.has([a.commune,a.secteur_code,a.rue,a.numero].join('||')));
+  let inserted=0;
+  for(let i=0;i<missing.length;i+=500){const batch=missing.slice(i,i+500);const {error}=await supabaseClient.from('adresses').insert(batch);if(error){alert('Erreur import après '+inserted+' nouvelles adresses : '+error.message);return;}inserted+=batch.length;}
+  alert('Import terminé : '+inserted+' nouvelle(s) adresse(s). Les adresses déjà présentes ont été conservées.');
+  await chargerAdminAdresses();
+}
+
+async function chargerAdminAdresses(){
+  const box=document.getElementById('adminAddresses'); if(!box)return;
+  const {data,error}=await supabaseClient.from('adresses').select('id,commune,secteur_code,rue,numero,statut,don,observation,vendeur_id').order('commune').order('secteur_code').order('rue').order('numero');
+  if(error){box.innerHTML='<div class="notice">Erreur : '+esc(error.message)+'</div>';return;}
+  adminAddressesCache=data||[];
+  const limit=adminAddressesCache.slice(0,250);
+  let html='<div class="small">'+adminAddressesCache.length+' adresse(s) dans Supabase. Affichage des 250 premières pour garder l’écran rapide.</div><div style="overflow:auto;max-height:520px"><table><tr><th>Commune</th><th>Secteur</th><th>Adresse</th><th>Statut</th><th>Don</th><th>Vendeur</th><th>Actions</th></tr>';
+  for(const a of limit){
+    const vendor=adminUsersCache.find(u=>u.id===a.vendeur_id)?.nom||'—';
+    html+='<tr><td>'+esc(a.commune)+'</td><td>'+esc(a.secteur_code)+'</td><td>'+esc(a.numero)+' '+esc(a.rue)+'</td><td>'+esc(a.statut)+'</td><td>'+Number(a.don||0).toFixed(2)+' €</td><td>'+esc(vendor)+'</td><td><button class="secondary" onclick="editerAdresseAdmin('+a.id+')">✏️ Modifier</button></td></tr>';
+  }
+  html+='</table></div>';
+  box.innerHTML=html;
+}
+
+async function editerAdresseAdmin(id){
+  if(!(await isAdmin())) return;
+  const a=adminAddressesCache.find(x=>x.id===id);if(!a)return;
+  const rue=prompt('Rue / voie',a.rue);if(rue===null)return;
+  const numero=prompt('Numéro',a.numero);if(numero===null)return;
+  const statut=prompt('Statut : non_fait / distribue / absent / refus',a.statut);if(statut===null)return;
+  if(!['non_fait','distribue','absent','refus'].includes(statut)){alert('Statut invalide.');return;}
+  const don=prompt('Don (€)',String(a.don||0));if(don===null)return;
+  const observation=prompt('Observation',a.observation||'');if(observation===null)return;
+  const secteurCode=prompt('Code secteur',a.secteur_code);if(secteurCode===null)return;
+  const commune=prompt('Commune',a.commune);if(commune===null)return;
+  const {error}=await supabaseClient.from('adresses').update({rue:rue.trim(),numero:numero.trim(),statut,don:Number(String(don).replace(',','.'))||0,observation,secteur_code:secteurCode.trim(),commune:commune.trim()}).eq('id',id);
+  if(error){alert('Erreur : '+error.message);return;}
+  await chargerAdminAdresses();
+  await renderCurrentFromSupabase();
+}
+
+async function exportCSVAdmin(){
+  if(!(await isAdmin()))return;
+  const rows=[['ID','Commune','Secteur','Rue','Numéro','Statut','Don (€)','Observation','Vendeur']];
+  for(const a of adminAddressesCache){const v=adminUsersCache.find(u=>u.id===a.vendeur_id)?.nom||'';rows.push([a.id,a.commune,a.secteur_code,a.rue,a.numero,a.statut,a.don||0,a.observation||'',v]);}
+  const csv=rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\n');
+  const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='adresses_tournee_calendriers_2026.csv';a.click();URL.revokeObjectURL(url);
+}
+
+// ---------------- APPLICATION CONNECTEE A SUPABASE ----------------
+let currentUser=null;
+let currentRows=[];
+let localFallbackEnabled=true;
+
+async function loadAssignedSectors(){
+  if(!currentUser)return [];
+  const {data:profile}=await supabaseClient.from('profiles').select('role').eq('id',currentUser.id).maybeSingle();
+  if(profile?.role==='admin') return adminSectorsCache.length?adminSectorsCache:(await supabaseClient.from('secteurs').select('id,code,commune,nb_calendriers').order('commune').order('code')).data||[];
+  const {data:as,error}=await supabaseClient.from('vendeur_secteurs').select('secteur_id').eq('vendeur_id',currentUser.id);
+  if(error){console.error(error);return []}
+  const ids=(as||[]).map(x=>x.secteur_id);if(!ids.length)return [];
+  const {data,error:e}=await supabaseClient.from('secteurs').select('id,code,commune,nb_calendriers').in('id',ids).order('commune').order('code');
+  if(e){console.error(e);return []}return data||[];
+}
+
+async function refreshSectors(){
+  const list=await loadAssignedSectors();
+  secteur.innerHTML='';
+  if(!list.length){
+    document.getElementById('sectorTitle').textContent='Aucun secteur attribué';
+    document.getElementById('sectorInfo').textContent='Demande à l’administrateur de t’attribuer une tournée.';
+    document.getElementById('addresses').innerHTML='';document.getElementById('summary').innerHTML='';return;
+  }
+  const communes=[...new Set(list.map(x=>x.commune))];
+  commune.innerHTML=communes.map(c=>'<option>'+esc(c)+'</option>').join('');
+  commune._sectorList=list;
+  fillSectorOptions(list);
+  await renderAll();
+}
+function fillSectorOptions(list){
+  const c=commune.value;secteur.innerHTML=list.filter(s=>s.commune===c).map(s=>'<option value="'+esc(s.code)+'">'+esc(s.code)+'</option>').join('');
+}
+commune.onchange=async()=>{fillSectorOptions(commune._sectorList||[]);await renderAll()};
+secteur.onchange=renderAll;
+
+async function getSupabaseRows(){
+  const {data,error}=await supabaseClient.from('adresses').select('id,commune,secteur_code,rue,numero,statut,don,observation,vendeur_id').eq('commune',commune.value).eq('secteur_code',secteur.value).order('rue').order('numero');
+  if(error){console.error(error);return []}return data||[];
+}
+async function renderCurrentFromSupabase(){currentRows=await getSupabaseRows();renderRows();summary();}
+async function renderAll(){
+  const list=commune._sectorList||[];const s=list.find(x=>x.code===secteur.value&&x.commune===commune.value);if(!s)return;
+  currentRows=await getSupabaseRows();
+  const st=stats(currentRows);
+  document.getElementById('sectorTitle').textContent=commune.value+' — '+secteur.value;
+  document.getElementById('sectorInfo').textContent=s.nb_calendriers+' calendriers prévus · '+currentRows.length+' adresses · tournée synchronisée avec Supabase';
+  document.getElementById('done').textContent=st.done;document.getElementById('absent').textContent=st.absent;document.getElementById('refused').textContent=st.refused;document.getElementById('money').textContent=st.money.toFixed(2)+' €';
+  renderRows();summary();
+}
+function renderRows(){
+  const arr=currentRows,q=(document.getElementById('search').value||'').toLowerCase().trim(),f=document.getElementById('filter').value,box=document.getElementById('addresses');box.innerHTML='';
+  const filtered=arr.filter(a=>(a.rue+' '+a.numero).toLowerCase().includes(q)&&(f==='all'||a.statut===f));
+  document.getElementById('empty').classList.toggle('hidden',filtered.length>0);
+  let last='';filtered.forEach(a=>{if(a.rue!==last){const h=document.createElement('div');h.className='small';h.style.cssText='font-weight:800;margin:14px 0 4px;text-transform:uppercase';h.textContent=a.rue;box.appendChild(h);last=a.rue}
+    const div=document.createElement('div');div.className='address';const badge=a.statut==='distribue'?'🟢 Distribué':a.statut==='absent'?'🟠 Absent':a.statut==='refus'?'🔴 Refus':'⚪ Non fait';
+    div.innerHTML='<div><div class="addr">'+esc(a.numero)+' '+esc(a.rue)+'</div><span class="badge">'+badge+'</span>'+(a.observation?'<div class="small">'+esc(a.observation)+'</div>':'')+'</div><div class="buttons"><button class="success" onclick="setStatus('+a.id+',\'distribue\')">Distribué</button><button class="warn" onclick="setStatus('+a.id+',\'absent\')">Absent</button><button class="danger" onclick="setStatus('+a.id+',\'refus\')">Refus</button><button class="secondary" onclick="editAddress('+a.id+')">✏️</button></div>';
+    box.appendChild(div);
+  });
+  const n=document.createElement('div');n.className='small';n.style.marginTop='10px';n.textContent=filtered.length+' adresse(s) affichée(s) sur '+arr.length;box.appendChild(n);
+}
+async function setStatus(id,status){
+  const a=currentRows.find(x=>x.id===id);if(!a)return;
+  let don=a.don||0;
+  if(status==='distribue'){const amount=prompt('Montant du don (€) — mettre 0 si aucun don :',String(don));if(amount===null)return;don=parseFloat(String(amount).replace(',','.'));if(!Number.isFinite(don)||don<0){alert('Montant invalide');return}}
+  else don=0;
+  const {error}=await supabaseClient.from('adresses').update({statut,don}).eq('id',id);if(error){alert('Erreur : '+error.message);return}await renderCurrentFromSupabase();
+}
+async function editAddress(id){
+  const a=currentRows.find(x=>x.id===id);if(!a)return;
+  const num=prompt('Numéro de l’adresse',a.numero);if(num===null)return;const obs=prompt('Observation',a.observation||'');if(obs===null)return;
+  const {error}=await supabaseClient.from('adresses').update({numero:num.trim(),observation:obs}).eq('id',id);if(error){alert('Erreur : '+error.message);return}await renderCurrentFromSupabase();
+}
+async function resetSector(){if(!confirm('Réinitialiser les statuts, dons et observations de ce secteur ?'))return;const {error}=await supabaseClient.from('adresses').update({statut:'non_fait',don:0,observation:null}).eq('commune',commune.value).eq('secteur_code',secteur.value);if(error){alert('Erreur : '+error.message);return}await renderCurrentFromSupabase();}
+async function summary(){
+  const list=commune._sectorList||[];let html='<table><tr><th>Secteur</th><th>Prévu</th><th>Adresses</th><th>Distribués</th><th>Absents</th><th>Refus</th><th>Dons</th></tr>';let td=0,ta=0,tr=0,tm=0;
+  for(const s of list){const {data}=await supabaseClient.from('adresses').select('statut,don').eq('commune',s.commune).eq('secteur_code',s.code);const a=data||[],x=stats(a);td+=x.done;ta+=x.absent;tr+=x.refused;tm+=x.money;html+='<tr><td>'+esc(s.commune)+' — '+esc(s.code)+'</td><td>'+s.nb_calendriers+'</td><td>'+a.length+'</td><td>'+x.done+'</td><td>'+x.absent+'</td><td>'+x.refused+'</td><td>'+x.money.toFixed(2)+' €</td></tr>'}
+  html+='<tr><th>TOTAL</th><th>'+list.reduce((n,s)=>n+(s.nb_calendriers||0),0)+'</th><th>—</th><th>'+td+'</th><th>'+ta+'</th><th>'+tr+'</th><th>'+tm.toFixed(2)+' €</th></tr></table>';document.getElementById('summary').innerHTML=html;
+}
+function exportCSV(){
+  const rows=[['Commune','Secteur','Rue','Numéro','Statut','Don (€)','Observation']];for(const a of currentRows)rows.push([a.commune,a.secteur_code,a.rue,a.numero,a.statut,a.don||0,a.observation||'']);const csv=rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(';')).join('\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='tournee_'+commune.value+'_'+secteur.value+'.csv';a.click();URL.revokeObjectURL(url);
+}
+
+async function afficherApplication(session){
+  if(!session||!session.user){afficherConnexion();return;}currentUser=session.user;
+  document.getElementById('loginScreen').classList.add('hidden');document.getElementById('appContent').classList.remove('hidden');document.getElementById('userEmail').textContent=session.user.email||'';
+  const {data:profile}=await supabaseClient.from('profiles').select('role').eq('id',session.user.id).maybeSingle();
+  document.getElementById('adminButton').style.display=profile?.role==='admin'?'inline-block':'none';
+  await refreshSectors();
+}
 verifierSession();
-
 </script>
-
 </body>
 </html>
