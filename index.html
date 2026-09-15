@@ -106,7 +106,68 @@ function exportCSV(){const all=ensureData(),rows=[['Commune','Secteur','Rue','Nu
 function esc(x){return String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 ensureData();refreshSectors();
 </script>
+  <script>
+async function seConnecter() {
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+  const message = document.getElementById("loginMessage");
+
+  if (!email || !password) {
+    message.textContent = "Veuillez renseigner votre e-mail et votre mot de passe.";
+    return;
+  }
+
+  message.textContent = "Connexion en cours...";
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if (error) {
+    console.error(error);
+    message.textContent = "Erreur de connexion : " + error.message;
+    return;
+  }
+
+  message.textContent = "Connexion réussie !";
+
+  document.getElementById("loginScreen").style.display = "none";
+
+  alert("Connexion réussie !");
+}
+</script>
 </body>
+
+<div id="loginScreen" style="max-width:420px;margin:40px auto;padding:20px;">
+  <h2>🔥 Tournée Calendriers 2026</h2>
+  <p>Connexion</p>
+
+  <label for="loginEmail">Adresse e-mail</label>
+  <input
+    id="loginEmail"
+    type="email"
+    placeholder="Votre adresse e-mail"
+    style="width:100%;padding:12px;margin:6px 0 15px;box-sizing:border-box;"
+  >
+
+  <label for="loginPassword">Mot de passe</label>
+  <input
+    id="loginPassword"
+    type="password"
+    placeholder="Votre mot de passe"
+    style="width:100%;padding:12px;margin:6px 0 15px;box-sizing:border-box;"
+  >
+
+  <button
+    onclick="seConnecter()"
+    style="width:100%;padding:12px;font-size:16px;"
+  >
+    🔐 Se connecter
+  </button>
+
+  <p id="loginMessage" style="margin-top:15px;"></p>
+</div>
   <script>
 async function testerConnexionSupabase() {
   const { data, error } = await supabaseClient
