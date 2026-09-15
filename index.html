@@ -107,4 +107,20 @@ function esc(x){return String(x).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;',
 ensureData();refreshSectors();
 </script>
 </body>
+  <script>
+async function testerConnexionSupabase() {
+  const { data, error } = await supabaseClient
+    .from("secteurs")
+    .select("id, code, commune");
+
+  if (error) {
+    console.error("Erreur Supabase :", error);
+    alert("Connexion Supabase : ERREUR");
+    return;
+  }
+
+  console.log("Secteurs récupérés depuis Supabase :", data);
+  alert("Connexion Supabase : OK");
+}
+</script>
 </html>
