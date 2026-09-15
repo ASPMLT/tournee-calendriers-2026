@@ -208,10 +208,19 @@ async function afficherApplication(session){
     .eq('id',session.user.id)
     .maybeSingle();
 
-  if(!error && profile?.role==='admin') adminButton.style.display='inline-block';
+  if(error){
+    console.error(error);
+    document.getElementById('sectorTitle').textContent='Erreur de profil';
+    document.getElementById('sectorInfo').textContent=error.message;
+    return;
+  }
 
-  ensureData();
-  refreshSectors();
+  if(profile?.role==='admin'){
+    adminButton.style.display='inline-block';
+    await autoInitialiserAdressesSupabase();
+  }
+
+  await refreshSectors();
 }
 
 async function seConnecter(){
@@ -296,30 +305,72 @@ function renderAdminUsers(assignments){
 
 async function sauverUtilisateur(id){
   if(!(await isAdmin())) return;
+
   const nom=document.getElementById('nom_'+id).value.trim();
   const role=document.getElementById('role_'+id).value;
-  const {error:e1}=await supabaseClient.from('profiles').update({nom,role}).eq('id',id);
+
+  const {error:e1}=await supabaseClient
+    .from('profiles')
+    .update({nom,role})
+    .eq('id',id);
+
   if(e1){alert('Erreur profil : '+e1.message);return;}
+
   const selected=[...document.querySelectorAll('.assign_'+id+':checked')].map(x=>Number(x.value));
-  const {error:e2}=await supabaseClient.from('vendeur_secteurs').delete().eq('vendeur_id',id);
+
+  // On supprime les anciennes attributions de ce vendeur.
+  const {error:e2}=await supabaseClient
+    .from('vendeur_secteurs')
+    .delete()
+    .eq('vendeur_id',id);
+
   if(e2){alert('Erreur suppression des anciennes attributions : '+e2.message);return;}
-  if(selected.length){
-    const rows=selected.map(secteur_id=>({vendeur_id:id,secteur_id}));
-    const {error:e3}=await supabaseClient.from('vendeur_secteurs').insert(rows);
+
+  // Un secteur est attribué à un seul vendeur.
+  for(const secteurId of selected){
+    await supabaseClient
+      .from('vendeur_secteurs')
+      .delete()
+      .eq('secteur_id',secteurId)
+      .neq('vendeur_id',id);
+
+    const {error:e3}=await supabaseClient
+      .from('vendeur_secteurs')
+      .insert({vendeur_id:id,secteur_id:secteurId});
+
     if(e3){alert('Erreur attribution : '+e3.message);return;}
   }
-  // Un secteur ne peut être vendu que par un vendeur à la fois dans cette application.
-  // Les adresses du secteur sont donc rattachées au vendeur sélectionné. Si aucun vendeur,
-  // elles restent sans attribution.
+
+  // Synchronisation du vendeur sur les adresses.
   for(const sec of adminSectorsCache){
-    const shouldOwn=selected.includes(sec.id);
-    if(shouldOwn) await supabaseClient.from('adresses').update({vendeur_id:id}).eq('secteur_code',sec.code).eq('commune',sec.commune);
-    else {
-      const {data:other}=await supabaseClient.from('vendeur_secteurs').select('vendeur_id').eq('secteur_id',sec.id).limit(1).maybeSingle();
-      if(!other) await supabaseClient.from('adresses').update({vendeur_id:null}).eq('secteur_code',sec.code).eq('commune',sec.commune);
+    if(selected.includes(sec.id)){
+      const {error:e4}=await supabaseClient
+        .from('adresses')
+        .update({vendeur_id:id})
+        .eq('secteur_code',sec.code)
+        .eq('commune',sec.commune);
+      if(e4){alert('Erreur attribution des adresses : '+e4.message);return;}
+    }else{
+      const {data:owner}=await supabaseClient
+        .from('vendeur_secteurs')
+        .select('vendeur_id')
+        .eq('secteur_id',sec.id)
+        .limit(1)
+        .maybeSingle();
+
+      const ownerId=owner?.vendeur_id||null;
+
+      const {error:e5}=await supabaseClient
+        .from('adresses')
+        .update({vendeur_id:ownerId})
+        .eq('secteur_code',sec.code)
+        .eq('commune',sec.commune);
+
+      if(e5){alert('Erreur de synchronisation des adresses : '+e5.message);return;}
     }
   }
-  alert('Compte et attributions enregistrés.');
+
+  alert('Compte et secteurs enregistrés.');
   await chargerAdministration();
 }
 
@@ -373,6 +424,51 @@ async function supprimerSecteur(id){
   if(error){alert('Impossible de supprimer : '+error.message);return;}
   await supabaseClient.from('adresses').update({vendeur_id:null}).eq('secteur_code',sec.code).eq('commune',sec.commune);
   await chargerAdministration();
+}
+
+async function autoInitialiserAdressesSupabase(){
+  if(!(await isAdmin())) return;
+
+  const {data:existing,error}=await supabaseClient
+    .from('adresses')
+    .select('commune,secteur_code,rue,numero');
+
+  if(error){
+    console.error('Lecture des adresses impossible :',error);
+    return;
+  }
+
+  const rows=[];
+  for(const c of Object.keys(preloadedAddresses))
+    for(const s of Object.keys(preloadedAddresses[c]))
+      for(const street of Object.keys(preloadedAddresses[c][s]))
+        for(const number of preloadedAddresses[c][s][street])
+          rows.push({
+            commune:c,
+            secteur_code:s,
+            rue:street,
+            numero:String(number),
+            statut:'non_fait',
+            don:0,
+            observation:null
+          });
+
+  const seen=new Set((existing||[]).map(a=>[a.commune,a.secteur_code,a.rue,a.numero].join('||')));
+  const missing=rows.filter(a=>!seen.has([a.commune,a.secteur_code,a.rue,a.numero].join('||')));
+
+  if(!missing.length) return;
+
+  for(let i=0;i<missing.length;i+=200){
+    const batch=missing.slice(i,i+200);
+    const {error:insertError}=await supabaseClient.from('adresses').insert(batch);
+    if(insertError){
+      console.error('Import automatique arrêté :',insertError);
+      alert('Les adresses n’ont pas pu être restaurées : '+insertError.message);
+      return;
+    }
+  }
+
+  console.log(missing.length+' adresse(s) importée(s) automatiquement.');
 }
 
 async function initialiserAdressesSupabase(){
