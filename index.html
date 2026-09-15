@@ -1559,9 +1559,21 @@ function afficherApplication(){
     .getElementById('appContent')
     .classList.remove('hidden');
 
+  // Affiche l'e-mail de la personne connectée
+  supabaseClient.auth.getSession().then(({ data }) => {
+    const email = data.session?.user?.email || "";
+    const userEmail = document.getElementById('userEmail');
+
+    if (userEmail) {
+      userEmail.textContent = email;
+    }
+  });
+
   ensureData();
 
   refreshSectors();
+
+}
 
 }
 
